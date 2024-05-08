@@ -104,12 +104,14 @@ impl Iterator for System{
 
 
 
-/*
+
 fn main() -> Result<(), Error>{
-    let h = 3.;
-    let amp = 0.3;
+
+
+    let h = 22./10.;
+    let amp = 11./11.;
     let w = 1.;
-    let res = 0.1;
+    let res = 1.;
     let k = 1001.;
     let g = -0.1;
 
@@ -118,27 +120,29 @@ fn main() -> Result<(), Error>{
 
     let dt = 0.01;
 
-    let particle1 = Particle::new(z, -3., r);
-    let particle2 = Particle::new(z, 3., r);
+    let particle1 = Particle::new(z, -10., r);
+    let particle2 = Particle::new(z, 7., r);
+    let particle3 = Particle::new(z, -1., r);
+    let particle4 = Particle::new(z, 15., r);
     let plate = Plate::new(w, amp, h, res, g, k);
-    let mut system = System::new(plate, vec![particle1, particle2], dt);
+    let mut system = System::new(plate, vec![particle1, particle2, particle3, particle4], dt);
     
 
-    for _a in system.by_ref().take(10000000){
+    for _a in system.by_ref().take(50000000){
         continue
     }
     
     let path = "data.txt";
     let mut output = File::create(path)?;
     for (t, p, v) in system.by_ref().take(10000){
-        writeln!(output,"{} {} {} {} {} {} {}", t, p[0], v[0], p[1], v[1], plate.get_ceil(t) - r, plate.get_floor(t) + r)?;
+        writeln!(output,"{} {} {} {} {} {} {}", t, p[0], p[1], p[2], p[3], plate.get_ceil(t) - r, plate.get_floor(t) + r)?;
     } 
     println!("done");
     Ok(())
 }
-*/
 
 
+/* 
 fn main() -> Result<(), Error>{
     let path = "data.txt";
     let mut output = File::create(path)?;
@@ -180,4 +184,4 @@ fn main() -> Result<(), Error>{
     }
     println!("done");
     Ok(())
-}
+}*/
